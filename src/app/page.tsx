@@ -4,7 +4,36 @@ import { IoCloseCircle } from "react-icons/io5";
 
 import "../styles/page.css"
 
-export default function Home(){
+
+type Product = {
+    id: number;
+    name: string;
+    brand: string;
+    description: string;
+    photo: string
+    price: number;
+    createdAt: string,
+    updatedAt: string,
+}
+
+
+async function getProducts(){
+    try{ 
+        const response = await fetch("https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=price&orderBy=ASC")
+        if(!response.ok){
+            throw new Error(`Erro ao buscar os dados: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch(error){
+        console.log("Ocorreu um erro: ", error);
+    }
+}
+
+export default async function Home(){
+    const data = await getProducts();
+    const products = data.products;
+    console.log(products)
     return (
         <>
         <header>
@@ -15,94 +44,19 @@ export default function Home(){
         </header>
         <main>
             <div className="product-list">
-                <div className="product">
-                    <div className="product__info">
-                        <img className="product__img" src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperxcloudstinger.webp" alt="Apple Watch Series 4 GPS" />
-                        <div className="product__wrapper">
-                            <h3 className="product__title">Apple Watch Series 4 GPS</h3>
-                            <p className="product__price">R$399</p>
+                {products.map((product:Product) => (
+                    <div className="product" key={product.id}>
+                        <div className="product__info">
+                            <img className="product__img" src={product.photo} />
+                            <div className="product__wrapper">
+                                <h3 className="product__title">{product.name}</h3>
+                                <p className="product__price">{product.price}</p>
+                            </div>
+                            <p className="product__description">{product.description}</p>
                         </div>
-                        <p className="product__description">Redesigned from scratch and completely revised.</p>
+                        <button className="product__btn"><LuShoppingBag /> Comprar</button>
                     </div>
-                    <button className="product__btn"><LuShoppingBag /> Comprar</button>
-                </div>
-                <div className="product">
-                    <div className="product__info">
-                        <img className="product__img" src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperxcloudstinger.webp" alt="Apple Watch Series 4 GPS" />
-                        <div className="product__wrapper">
-                            <h3 className="product__title">Apple Macbook Pro</h3>
-                            <p className="product__price">R$2.499</p>
-                        </div>
-                        <p className="product__description">Redesigned from scratch and completely revised.</p>
-                    </div>
-                    <button className="product__btn"><LuShoppingBag /> Comprar</button>
-                </div>
-                <div className="product">
-                    <div className="product__info">
-                        <img className="product__img" src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperxcloudstinger.webp" alt="Apple Watch Series 4 GPS" />
-                        <div className="product__wrapper">
-                            <h3 className="product__title">Apple Watch Series 4 GPS</h3>
-                            <p className="product__price">R$399</p>
-                        </div>
-                        <p className="product__description">Redesigned from scratch and completely revised.</p>
-                    </div>
-                    <button className="product__btn"><LuShoppingBag /> Comprar</button>
-                </div>
-                <div className="product">
-                    <div className="product__info">
-                        <img className="product__img" src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperxcloudstinger.webp" alt="Apple Watch Series 4 GPS" />
-                        <div className="product__wrapper">
-                            <h3 className="product__title">Apple Watch Series 4 GPS</h3>
-                            <p className="product__price">R$399</p>
-                        </div>
-                        <p className="product__description">Redesigned from scratch and completely revised.</p>
-                    </div>
-                    <button className="product__btn"><LuShoppingBag /> Comprar</button>
-                </div>
-                <div className="product">
-                    <div className="product__info">
-                        <img className="product__img" src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperxcloudstinger.webp" alt="Apple Watch Series 4 GPS" />
-                        <div className="product__wrapper">
-                            <h3 className="product__title">Apple Watch Series 4 GPS</h3>
-                            <p className="product__price">R$399</p>
-                        </div>
-                        <p className="product__description">Redesigned from scratch and completely revised.</p>
-                    </div>
-                    <button className="product__btn"><LuShoppingBag /> Comprar</button>
-                </div>
-                <div className="product">
-                    <div className="product__info">
-                        <img className="product__img" src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperxcloudstinger.webp" alt="Apple Watch Series 4 GPS" />
-                        <div className="product__wrapper">
-                            <h3 className="product__title">Apple Watch Series 4 GPS</h3>
-                            <p className="product__price">R$399</p>
-                        </div>
-                        <p className="product__description">Redesigned from scratch and completely revised.</p>
-                    </div>
-                    <button className="product__btn"><LuShoppingBag /> Comprar</button>
-                </div>
-                <div className="product">
-                    <div className="product__info">
-                        <img className="product__img" src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperxcloudstinger.webp" alt="Apple Watch Series 4 GPS" />
-                        <div className="product__wrapper">
-                            <h3 className="product__title">Apple Watch Series 4 GPS</h3>
-                            <p className="product__price">R$399</p>
-                        </div>
-                        <p className="product__description">Redesigned from scratch and completely revised.</p>
-                    </div>
-                    <button className="product__btn"><LuShoppingBag /> Comprar</button>
-                </div>
-                <div className="product">
-                    <div className="product__info">
-                        <img className="product__img" src="https://mks-sistemas.nyc3.digitaloceanspaces.com/products/hyperxcloudstinger.webp" alt="Apple Watch Series 4 GPS" />
-                        <div className="product__wrapper">
-                            <h3 className="product__title">Apple Watch Series 4 GPS</h3>
-                            <p className="product__price">R$399</p>
-                        </div>
-                        <p className="product__description">Redesigned from scratch and completely revised.</p>
-                    </div>
-                    <button className="product__btn"><LuShoppingBag /> Comprar</button>
-                </div>
+                ))}
             </div>
         </main>
         <footer>

@@ -1,0 +1,142 @@
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem;
+    background-color: var(--primary-color);
+}
+
+.title-brand{
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 44px;
+    color: var(--white)
+}
+.title-brand span{
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 19px;
+    color: var(--white);
+    margin-left: 8px;
+}
+
+.cart-btn{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background-color: var(--white);
+    color: var(--black);
+    padding: 11px 27px 11px 15px;
+    border-radius: 8px;
+
+    font-size: 18px;
+    line-height: 100%;
+    font-weight: 800;
+}
+
+.cart-btn svg{
+    width: 24px;
+    height: 24px;
+}
+
+/* Header */
+
+
+/* Card */
+
+main{
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+
+.product-list{
+    display: grid;
+    grid-template-columns: repeat(4, 218px);
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+
+.product{
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px 0px rgba(189, 189, 189, 0.75);
+}   
+
+.product__info{
+    padding: 16px;
+}
+
+.product__img{
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+
+}
+
+.product__wrapper{
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    margin-top: 14px;
+    margin-bottom: 8px;
+}
+
+.product__title{
+    font-weight: 500;
+}
+
+.product__price{
+    font-weight: 800;
+    font-size: 13px;
+    line-height: 100%;
+    letter-spacing: 1px;
+    color: var(--white);
+    background-color: var(--black);
+    padding: 6px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.product__description{
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 400;
+}
+
+.product__btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 8px 0;
+    border-radius: 0 0 8px 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Card */
+
+
+/* Footer */
+
+footer{
+    width: 100%;
+    background-color: #EEEEEE;
+    text-align: center;
+    padding: 8px;
+}
+
+.copyright{
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 400;
+    text-decoration: none;
+}

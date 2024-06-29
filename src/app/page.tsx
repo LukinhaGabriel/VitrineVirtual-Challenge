@@ -22,9 +22,6 @@ type Product = {
 }
 
 
-
-
-
 export default function Home(){
     const [products, setProducts] = useState([]); 
     const [cartquantity, setCartQuantity] = useState(0);
@@ -37,7 +34,6 @@ export default function Home(){
         async function fetchProducts(){
             const data = await API.getProducts();
             setProducts(data.products || []);
-            setCartQuantity(LocalStorage.getItemFromCart().length);
         }
         fetchProducts();
     }, []);
@@ -50,11 +46,7 @@ export default function Home(){
         LocalStorage.saveToLocalStorage(chosenProduct);
         setCartQuantity(LocalStorage.getItemFromCart().length);
     }   
-    
-    
-    // const data = await gestProducts();
-    // const products = data.products;
-    // console.log(products)
+
     return (
         <>
         <header>
@@ -64,23 +56,27 @@ export default function Home(){
             </button>
         </header>
         <main>
-            <div className="product-list">
-                {products.map((product:Product) => (
-                    <div className="product" key={product.id}  onClick={() => addCart(product.id)}>
-                        <div className="product__info">
-                            <div className="product__img">
-                                <img  src={product.photo} alt={product.name}/>
+            <section id="section-product">
+                <div className="product-container">
+                    <div className="product-list">
+                        {products.map((product:Product) => (
+                            <div className="product-item" key={product.id}  onClick={() => addCart(product.id)}>
+                                <div className="product__info">
+                                    <div className="product__img">
+                                        <img  src={product.photo} alt={product.name}/>
+                                    </div>
+                                    <div className="product__wrapper">
+                                        <h3 className="product__title">{product.name}</h3>
+                                        <p className="product__price">R${Math.floor(product.price)}</p>
+                                    </div>
+                                    <p className="product__description">{product.description}</p>
+                                </div>
+                                <button className="product__btn"><LuShoppingBag /> Comprar</button>
                             </div>
-                            <div className="product__wrapper">
-                                <h3 className="product__title">{product.name}</h3>
-                                <p className="product__price">R${Math.floor(product.price)}</p>
-                            </div>
-                            <p className="product__description">{product.description}</p>
-                        </div>
-                        <button className="product__btn"><LuShoppingBag /> Comprar</button>
+                        ))}
                     </div>
-                ))}
-            </div>
+                </div>
+            </section>
         </main>
         <footer>
             <p className="copyright">MKS sistemas © Todos os direitos reservados</p>

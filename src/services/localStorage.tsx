@@ -18,11 +18,17 @@ function getItemFromCart():Product[]{
 }
 
 function saveToLocalStorage(product:Product):void{
-    const products = getItemFromCart() || [];
-    products.push(product);
-    localStorage.setItem(localStorageKey, JSON.stringify(products));
+    const shoppingCart = getItemFromCart() || [];
+    
+    const productExists = shoppingCart.some(shoppingCartItem => shoppingCartItem.id === product.id)
+    if(productExists){
+        alert('O produto já está no carrinho');
+    } else{
+        shoppingCart.push(product);
+        localStorage.setItem(localStorageKey, JSON.stringify(shoppingCart));
+        alert("adicionado no carrinho :)");
+    }
 }
-
 export const LocalStorage = {
     saveToLocalStorage,
     getItemFromCart,

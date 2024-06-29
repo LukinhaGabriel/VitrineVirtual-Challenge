@@ -1,0 +1,22 @@
+
+footer{
+    width: 100%;
+    background-color: #EEEEEE;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.copyright{
+    font-size: 0.75rem; 
+    line-height: 0.938rem;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+
+@media screen and (min-width: 1081px){
+    footer{
+        position: absolute;
+        bottom: 0;
+    }
+}

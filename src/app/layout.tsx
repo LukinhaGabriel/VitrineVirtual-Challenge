@@ -3,7 +3,7 @@ import "../styles/global.css"
 
  
 export const metadata: Metadata = {
-  title: "MKS Sistemas",
+  title: "Vitrine Virtual Challenge",
   description: 'challenge mks sistemas',
 };
 
